@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.1.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="estbody">
+<div class="app-container">
+<h1 class="hed1">DBI PLANNER ESTIMATIONS</h1>
+<a href="#"	th:href = "@{/backToHomePage}" class="btn btn-danger backbtn">Back</a>
+<!--********** USER INPUTS*************** -->
+<div th:object="${userInput}" class="container user-inputs">
+ <p class="upar"> <span class="uispan">Target:</span><span th:text="*{targetedAmount}" class="uispan"> </span></p>
+  <p class="upar"><span class="uispan">Initial Balance:</span><span th:text="*{initialBalance}" class="uispan"></span></p>
+  <p class="upar"><span class="uispan">TakeProfit:</span><span th:text="*{takeProfit}" class="uispan"></span></p>
+  <p class="upar"><span class="uispan">StopLoss:</span><span th:text="*{stopLoss}" class="uispan"></span></p>
+  <p class="upar"><span class="uispan">WinRate:</span><span th:text="*{winRate}" class="euispan"></span></p>
+  <p class="upar"><span class="uispan">RiskPercentage:</span><span th:text="*{riskPercentage}" class="uispan"></span></p>
+</div>
+
+<div th:object="${estimations}" class="display">
+<p class="par"> Final Balance:<span th:text="*{finalBalance}"> </span></p>
+<p class="par"> Days:<span th:text="*{noDays}"> </span></p>
+<p class="par">Months:<span th:text="*{noMonths}"></span></p>
+<p class="par">Total trades:<span th:text="*{totalNoTrades}"></span></p>
+<p class="par">Win:<span th:text="*{noWinTrades}"></span></p>
+<p class="par">Loss:<span th:text="*{noLossTrades}"></span></p>
+</div>
+
+
+<!--********** TABLE FORMATTING*************** -->
+<table class="table   table-hover container table-bordered  tabledisplay" >
+<thead >
+<tr>
+<th>Initial Balance</th>
+<th>LotSize</th>
+<th>W/L</th>
+<th>Risk-Reward</th>
+<th>NetProfit</th>
+<th>New Balance</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="entry:${listOfEntries}">
+    <td th:text="${entry.getInitialBalance()}"></td>
+    <td th:text="${entry.getLotsize()}"></td>
+    <td th:text="${entry.getW$L()}"></td>
+    <td th:text="${entry.getRiskReward()}"></td>
+    <td th:text="${entry.getNetProfit()}"></td>
+    <td th:text="${entry.getNewBalanceCalculation()}"></td>
+    
+</tr>
+</tbody>
+
+
+</table>
+</div>
+</body>
+</html>

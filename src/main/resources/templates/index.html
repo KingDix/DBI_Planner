@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.1.2/css/bootstrap.min.css">
+
+</head>
+<body class="index-body">
+<div class="index-container"> 
+<h1 class="indexh1">DBI PLANNER</h1>
+<p class="indexp">Hi!  I am  DBI planner,I can plan for you,My job is to plan</p>
+<form th:object="${userInput}"  action="#" th:action="@{/estimate}" class="container" method="post">
+<label>Target</label> <input         type="text"  th:field=*{targetedAmount} placeholder="enter target">
+<label>Initial Balance</label><input type="text"  th:field=*{initialBalance} placeholder="enter initial balance">
+<label>TakeProfit</label><input      type="text"  th:field=*{takeProfit} placeholder="enter takeprofit">
+<label>StopLoss</label><input        type="text"  th:field=*{stopLoss} placeholder="enter stoploss">
+<label>WinRate</label><input         type="text"  th:field=*{winRate} placeholder="enter winrate ">
+<label>RiskPercentage</label><input  type="text"  th:field=*{riskPercentage} placeholder="enter riskpercentage">
+<button type="submit" class="btn  btn-danger bt" >Estimate</button>
+</form>
+</div> 
+</body>
+</html>
